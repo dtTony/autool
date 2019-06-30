@@ -1,6 +1,6 @@
 package indi.tony.autool.core;
 
-
+import indi.tony.autool.util.PropertiesCommon;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,17 +14,22 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseDriver {
     private WebDriver driver;
+    private PropertiesCommon pc;
+
+    public BaseDriver(PropertiesCommon pc){
+        this.pc = pc;
+    }
 
     public void initWebDriver(String brwType) {
 
         switch (brwType) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "/Users/didi/Documents/IdeaProjects/autool/src/test/resources/drivers/chromedriver");
+                System.setProperty("webdriver.chrome.driver", pc.getValue("webdriver.chrome.driver"));
                 this.driver = new ChromeDriver();
                 break;
             case "firefox":
             default:
-                System.setProperty("webdriver.gecko.driver", "/Users/didi/Documents/IdeaProjects/autool/src/test/resources/drivers/geckodriver");
+                System.setProperty("webdriver.gecko.driver", pc.getValue("webdriver.gecko.driver"));
                 this.driver = new FirefoxDriver();
                 break;
         }
@@ -54,7 +59,7 @@ public class BaseDriver {
     public void screenFullShot(String filePath, String fileName) {
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File(filePath + fileName + ".png"));
+            FileUtils.copyFile(scrFile, new File(filePath + "/"+ fileName + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
