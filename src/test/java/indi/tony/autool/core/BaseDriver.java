@@ -33,7 +33,7 @@ public class BaseDriver {
                 this.driver = new FirefoxDriver();
                 break;
         }
-
+        this.driver.manage().window().fullscreen();
         this.driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.SECONDS);
         this.driver.manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
         this.driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);

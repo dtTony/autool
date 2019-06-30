@@ -16,9 +16,10 @@ public class PropertiesCommon {
     public String getValue(String key){
         String value = "";
         Properties pro = new Properties();
+        File f = new File(this.filePath);
         FileInputStream in = null;
         try {
-            in = new FileInputStream(this.filePath);
+            in = new FileInputStream(f.getAbsoluteFile());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

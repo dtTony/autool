@@ -19,7 +19,7 @@ public class BaseCase {
     public void beforeClass() {
         CalendarCommon cc = new CalendarCommon();
         FileCommon fc = new FileCommon();
-        PropertiesCommon pc = new PropertiesCommon("/Users/didi/Documents/IdeaProjects/autool/src/test/resources/conf/main.properties");
+        PropertiesCommon pc = new PropertiesCommon("src/test/resources/conf/main.properties");
         String childrenClassName = this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1);
         this.data = ExcelCommon.getRow(pc.getValue("data.excel.path"), pc.getValue("data.excel.sheet"), childrenClassName);
         String screenPath = fc.generateFolder(pc.getValue("screen.folder.path") + cc.suffixDate() + "/" + childrenClassName + "-" + cc.suffixTime());

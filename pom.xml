@@ -89,7 +89,7 @@
                             <value>org.uncommons.reportng.HTMLReporter</value>
                         </property>
                     </properties>
-                    <workingDirectory>target/</workingDirectory>
+                    <workingDirectory>./</workingDirectory>
                     <!-- <forkMode>always</forkMode> -->
                 </configuration>
             </plugin>

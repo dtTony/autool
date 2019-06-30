@@ -11,15 +11,15 @@
 ### config file content
 ```
 #selenium config
-webdriver.chrome.driver=/Users/didi/Documents/IdeaProjects/autool/src/test/resources/drivers/chromedriver
-webdriver.gecko.driver=/Users/didi/Documents/IdeaProjects/autool/src/test/resources/drivers/geckodriver
+webdriver.chrome.driver=src/test/resources/drivers/chromedriver
+webdriver.gecko.driver=src/test/resources/drivers/geckodriver
 
 #data config
-data.excel.path=/Users/didi/Documents/IdeaProjects/autool/src/test/resources/data/data.xls
+data.excel.path=src/test/resources/data/data.xls
 data.excel.sheet=sheet1
 
 #screen config
-screen.folder.path=/Users/didi/Documents/IdeaProjects/autool/src/test/screenshot/
+screen.folder.path=src/test/screenshot/
 ```
 ## Run
 ### note
@@ -42,3 +42,7 @@ you can use screenshot in your task class
 this.basedriver.screenFullShot(this.screenPath, steps);
 ```
 
+## Note
+you need to choose a matching browser and driver version
+###drivers path
+./src/resources/drivers/
