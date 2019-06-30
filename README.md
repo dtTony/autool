@@ -21,10 +21,24 @@ data.excel.sheet=sheet1
 #screen config
 screen.folder.path=/Users/didi/Documents/IdeaProjects/autool/src/test/screenshot/
 ```
-
 ## Run
+### note
+if you want to run from command line, you need to setup maven in your environment
+```
+git clone https://github.com/dtTony/autool
+
+cd autool
+
+mvn clean test
+```
 
 ## Html report
+After run, a html report will be generated in below path:
+./target/surefire-report/html/index.html
 
 ## Screenshot
+you can use screenshot in your task class
+```
+this.basedriver.screenFullShot(this.screenPath, steps);
+```
 
