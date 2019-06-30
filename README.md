@@ -46,4 +46,4 @@ this.basedriver.screenFullShot(this.screenPath, steps);
 ### drivers path
 ./src/resources/drivers/
 
-you need to choose a matching browser and driver version
+*you need to choose a matching browser and driver version*
