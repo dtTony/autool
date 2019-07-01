@@ -34,6 +34,7 @@ mvn clean test
 
 ## Html report
 After run, a html report will be generated in below path:
+
 ./target/surefire-report/html/index.html
 
 ## Screenshot
