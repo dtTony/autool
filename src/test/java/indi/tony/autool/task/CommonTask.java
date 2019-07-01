@@ -3,7 +3,6 @@ package indi.tony.autool.task;
 import indi.tony.autool.core.BaseDriver;
 import indi.tony.autool.object.CommonPage;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 public class CommonTask {
     private BaseDriver basedriver;
