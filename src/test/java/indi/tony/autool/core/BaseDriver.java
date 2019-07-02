@@ -16,7 +16,7 @@ public class BaseDriver {
     private WebDriver driver;
     private PropertiesCommon pc;
 
-    public BaseDriver(PropertiesCommon pc){
+    BaseDriver(PropertiesCommon pc){
         this.pc = pc;
     }
 
@@ -54,6 +54,11 @@ public class BaseDriver {
     public WebElement waitAndFindElement(int timeout, By locator) {
         WebDriverWait driverwait = new WebDriverWait(this.driver, timeout);
         return driverwait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public String waitAndGetElementAttr(int timeout, By locator, String attr){
+        WebDriverWait driverwait = new WebDriverWait(this.driver, timeout);
+        return driverwait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute(attr);
     }
 
     public void screenFullShot(String filePath, String fileName) {

@@ -7,9 +7,11 @@ import indi.tony.autool.util.FileCommon;
 import indi.tony.autool.util.PropertiesCommon;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
 import java.util.ArrayList;
 
+@Listeners({indi.tony.autool.core.AssertionListener.class})
 public class BaseCase {
     protected CommonTask commontask;
     protected ArrayList<String> data;
@@ -25,8 +27,6 @@ public class BaseCase {
         String screenPath = fc.generateFolder(pc.getValue("screen.folder.path") + cc.suffixDate() + "/" + childrenClassName + "-" + cc.suffixTime());
         this.basedriver = new BaseDriver(pc);
         this.commontask = new CommonTask(this.basedriver, screenPath);
-
-
     }
 
     @AfterClass

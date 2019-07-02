@@ -11,35 +11,65 @@ public class CommonPage {
         this.basedriver = driver;
     }
 
-    public WebElement getByID(String value) {
-        return this.basedriver.waitAndFindElement(3, By.id(value));
+    public WebElement getElementByLocator(String key,String locator){
+        WebElement element = null;
+        switch (key) {
+            case "id":
+                element = this.basedriver.waitAndFindElement(3, By.id(locator));
+                break;
+            case "name":
+                element = this.basedriver.waitAndFindElement(3, By.name(locator));
+                break;
+            case "tag":
+                element = this.basedriver.waitAndFindElement(3, By.tagName(locator));
+                break;
+            case "xpath":
+                element = this.basedriver.waitAndFindElement(3, By.xpath(locator));
+                break;
+            case "css":
+                element = this.basedriver.waitAndFindElement(3, By.cssSelector(locator));
+                break;
+            case "class":
+                element = this.basedriver.waitAndFindElement(3, By.className(locator));
+                break;
+            case "linktext":
+                element = this.basedriver.waitAndFindElement(3, By.linkText(locator));
+                break;
+            case "partiallinktext":
+                element = this.basedriver.waitAndFindElement(3, By.partialLinkText(locator));
+                break;
+        }
+        return element;
     }
 
-    public WebElement getByName(String value) {
-        return this.basedriver.waitAndFindElement(3, By.name(value));
-    }
-
-    public WebElement getByTag(String value) {
-        return this.basedriver.waitAndFindElement(3, By.tagName(value));
-    }
-
-    public WebElement getByXpath(String value) {
-        return this.basedriver.waitAndFindElement(3, By.xpath(value));
-    }
-
-    public WebElement getByClass(String value) {
-        return this.basedriver.waitAndFindElement(3, By.className(value));
-    }
-
-    public WebElement getByCssSelector(String value) {
-        return this.basedriver.waitAndFindElement(3, By.cssSelector(value));
-    }
-
-    public WebElement getByLinkText(String value) {
-        return this.basedriver.waitAndFindElement(3, By.linkText(value));
-    }
-
-    public WebElement getByPartialLinkText(String value) {
-        return this.basedriver.waitAndFindElement(3, By.partialLinkText(value));
+    public String getElementAttrByLocator(String key,String locator, String attr){
+        String element_attr = null;
+        switch (key) {
+            case "id":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.id(locator), attr);
+                break;
+            case "name":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.name(locator), attr);
+                break;
+            case "tag":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.tagName(locator), attr);
+                break;
+            case "xpath":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.xpath(locator), attr);
+                break;
+            case "css":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.cssSelector(locator), attr);
+                break;
+            case "class":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.className(locator), attr);
+                break;
+            case "linktext":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.linkText(locator), attr);
+                break;
+            case "partiallinktext":
+                element_attr = this.basedriver.waitAndGetElementAttr(3, By.partialLinkText(locator), attr);
+                break;
+        }
+        return element_attr;
     }
 }

@@ -76,6 +76,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <!-- 解决mvn test idea 控制台中文乱码-->
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
