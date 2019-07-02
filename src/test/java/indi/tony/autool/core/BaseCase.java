@@ -24,7 +24,9 @@ public class BaseCase {
         PropertiesCommon pc = new PropertiesCommon("src/test/resources/conf/main.properties");
         String childrenClassName = this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1);
         this.data = ExcelCommon.getRow(pc.getValue("data.excel.path"), pc.getValue("data.excel.sheet"), childrenClassName);
+        System.out.println(cc.suffixDate() + "================================");
         String screenPath = fc.generateFolder(pc.getValue("screen.folder.path") + cc.suffixDate() + "/" + childrenClassName + "-" + cc.suffixTime());
+        System.out.println(screenPath + "+++++++++++++++++++++++++++++++++");
         this.basedriver = new BaseDriver(pc);
         this.commontask = new CommonTask(this.basedriver, screenPath);
     }

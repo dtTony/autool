@@ -72,4 +72,35 @@ public class CommonPage {
         }
         return element_attr;
     }
+
+    public String getElementTextByLocator(String key,String locator){
+        String element_text = null;
+        switch (key) {
+            case "id":
+                element_text = this.basedriver.waitAndGetElementText(3, By.id(locator));
+                break;
+            case "name":
+                element_text = this.basedriver.waitAndGetElementText(3, By.name(locator));
+                break;
+            case "tag":
+                element_text = this.basedriver.waitAndGetElementText(3, By.tagName(locator));
+                break;
+            case "xpath":
+                element_text = this.basedriver.waitAndGetElementText(3, By.xpath(locator));
+                break;
+            case "css":
+                element_text = this.basedriver.waitAndGetElementText(3, By.cssSelector(locator));
+                break;
+            case "class":
+                element_text = this.basedriver.waitAndGetElementText(3, By.className(locator));
+                break;
+            case "linktext":
+                element_text = this.basedriver.waitAndGetElementText(3, By.linkText(locator));
+                break;
+            case "partiallinktext":
+                element_text = this.basedriver.waitAndGetElementText(3, By.partialLinkText(locator));
+                break;
+        }
+        return element_text;
+    }
 }

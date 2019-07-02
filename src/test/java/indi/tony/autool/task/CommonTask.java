@@ -7,28 +7,35 @@ import org.openqa.selenium.WebElement;
 
 public class CommonTask {
     private BaseDriver basedriver;
-    private CommonPage commonpage;
-    private String screenpath;
+    private CommonPage common_page;
+    private String screen_path;
 
     public CommonTask(BaseDriver driver, String screenPath) {
         this.basedriver = driver;
-        this.screenpath = screenPath;
-        commonpage = new CommonPage(this.basedriver);
+        this.screen_path = screenPath;
+        common_page = new CommonPage(this.basedriver);
     }
 
     public void commonAction(String[] operation, String steps) {
         if (operation.length > 1) {
-            if (operation[0].toLowerCase().trim().equals("brw")) {
-                this.basedriver.initWebDriver(operation[1].trim());
-            } else if (operation[0].toLowerCase().trim().equals("url")) {
-                this.basedriver.getUrl(operation[1]);
-            } else if (operation[0].toLowerCase().trim().equals("verify-attr")) {
-                Assertion.verifyEquals(commonpage.getElementAttrByLocator(operation[2].toLowerCase().trim(), operation[3].trim(), operation[1].trim()), operation[4]);
-                System.out.println("testing");
-            } else {
-                WebElement element;
-                element = commonpage.getElementByLocator(operation[0].toLowerCase().trim(), operation[1].trim());
-                doAction(element, operation, steps);
+            switch (operation[0].toLowerCase().trim()) {
+                case "brw":
+                    this.basedriver.initWebDriver(operation[1].trim());
+                    break;
+                case "url":
+                    this.basedriver.getUrl(operation[1]);
+                    break;
+                case "verify-attr":
+                    Assertion.verifyEquals(common_page.getElementAttrByLocator(operation[2].toLowerCase().trim(), operation[3].trim(), operation[1].trim()), operation[4]);
+                    break;
+                case "verify-text":
+                    Assertion.verifyEquals(common_page.getElementTextByLocator(operation[1].toLowerCase().trim(), operation[2].trim()), operation[3]);
+                    break;
+                default:
+                    WebElement element;
+                    element = common_page.getElementByLocator(operation[0].toLowerCase().trim(), operation[1].trim());
+                    doAction(element, operation, steps);
+                    break;
             }
         }
     }
@@ -38,10 +45,10 @@ public class CommonTask {
             switch (operation[2].toLowerCase().trim()) {
                 case "input":
                     element.sendKeys(operation[3].trim());
-                    this.basedriver.screenFullShot(this.screenpath, steps);
+                    this.basedriver.screenFullShot(this.screen_path, steps);
                     break;
                 case "bt":
-                    this.basedriver.screenFullShot(this.screenpath, steps);
+                    this.basedriver.screenFullShot(this.screen_path, steps);
                     element.click();
                     break;
             }

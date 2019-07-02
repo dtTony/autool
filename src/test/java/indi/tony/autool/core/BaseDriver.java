@@ -61,6 +61,11 @@ public class BaseDriver {
         return driverwait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute(attr);
     }
 
+    public String waitAndGetElementText(int timeout, By locator){
+        WebDriverWait driverwait = new WebDriverWait(this.driver, timeout);
+        return driverwait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+
     public void screenFullShot(String filePath, String fileName) {
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
