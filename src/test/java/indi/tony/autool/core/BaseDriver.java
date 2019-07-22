@@ -21,7 +21,6 @@ public class BaseDriver {
     }
 
     public void initWebDriver(String brwType) {
-
         switch (brwType) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", pc.getValue("webdriver.chrome.driver"));
